@@ -36,25 +36,27 @@ int main (){
 
     struct buku b[100];
     int a1;
+    char yn1;
 
     switch (menu) {
     case 1:
         clearScreen();
-        a1++;
 
         cout << "\n"<< endl;	
 		cout << "============= Input Buku ===============\n";
 		cout << "\n" << endl;
-
-		cout << " Masukan data buku Ke \t :" << b[a1].jumlahList << "\n";
-		cout << " Kode Buku\t\t: ";
-        cin  >> b[a1].kodeBuku;
-        cout << "Judul buku\t\t:";
-        cin  >> b[a1].judulBuku;
-        cout << "Jumlah Buku\t\t";
-        cin  >> b[a1].jumlahBuku;
         
+		cout << "Masukan data buku Ke \t: ";
+        cin  >> a1;
+		cout << "Kode Buku\t\t: ";
+        cin  >> b[a1].kodeBuku;
+        cout << "Judul buku\t\t: ";
+        cin  >> b[a1].judulBuku;
+        cout << "Jumlah Buku\t\t: ";
+        cin  >> b[a1].jumlahBuku;
+        cout << endl;
 
+        clearScreen();
         break;
     case 2:
         clearScreen();
@@ -63,5 +65,5 @@ int main (){
 		cout << "\n" << endl;
     default:
         break;
-    }
+    } return main();
 }
