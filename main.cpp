@@ -110,7 +110,7 @@ int main (){
         cout << "Input Error !! Tekan Huruf apapun lalu enter untuk melanjutkan: ";
         cin  >> ynd;
         if (ynd =! 0) {
-            clearScreen;
+            clearScreen();
             break;
         }
 
