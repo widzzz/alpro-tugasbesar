@@ -36,7 +36,8 @@ int main (){
 
     struct buku b[100];
     struct pinjam p[100];
-    int a1;
+    int a1 = 0;
+    
     char ynd;
 
     switch (menu) {
@@ -46,9 +47,9 @@ int main (){
         cout << "\n"<< endl;	
 		cout << "============= Input Buku ===============\n";
 		cout << "\n" << endl;
-        
-		cout << "Masukan data buku ke\t: ";
-        cin  >> a1;
+
+		cout << "Masukan data buku ke " << a1+1 << "\n ";
+
 		cout << "Kode Buku\t\t: ";
         cin  >> b[a1].kodeBuku;
         cout << "Judul buku\t\t: ";
@@ -66,13 +67,13 @@ int main (){
         cout << "\n"<< endl;	
 		cout << "============= Daftar Buku ==============\n";
 		cout << "\n" << endl;
-        cout<<"------------------------------------------------------------------\n";
-		cout<<" No  Kode Buku     Judul Buku        Jumlah Buku     Buku Keluar \n";
-		cout<<"------------------------------------------------------------------\n";
+        cout<<"--------------------------------------------------------------------\n";
+		cout<<" No\tKode Buku\tJudul Buku\tJumlah Buku\tBuku Keluar\n";
+		cout<<"--------------------------------------------------------------------\n";
 
         for(int c = 0; c <= a1; c++){
 			int stok = b[c].jumlahBuku - p[c].bukuDipinjam;
-			cout << setw(2) << c+1 << setw(8) << b[c].kodeBuku << setw(22) << b[c].judulBuku << setw(14) << stok << setw(12) << p[c].bukuDipinjam;
+			cout << " " << c+1 << "\t" << b[c].kodeBuku << "\t" << b[c].judulBuku << "\t" << stok << "\t" << p[c].bukuDipinjam;
 			cout << endl;
 		}
 
@@ -85,7 +86,8 @@ int main (){
         break;
 
     case 3:
-
+        cout << "belum jadi";
+        break;
     case 4:
 
     case 5:
@@ -107,7 +109,7 @@ int main (){
     default:
         clearScreen();
 
-        cout << "Input Error !! Tekan Huruf apapun lalu enter untuk melanjutkan: ";
+        cout << "Input Error!! Tekan Huruf apapun lalu enter untuk melanjutkan: ";
         cin  >> ynd;
         if (ynd =! 0) {
             clearScreen();
