@@ -4,7 +4,7 @@
 using namespace std;
 
 struct buku {
-	int kodeBuku, hargaSewa, jumlahBuku, stokBuku, jumlahList;
+	int kodeBuku, jumlahBuku, jumlahList;
 	string judulBuku;
 };
 
@@ -22,8 +22,8 @@ void clearScreen() {
 
 int main (){
     int menu;
-    cout << "█░░ █ █▄▄ █▀█ ▄▀█ █▀█ █▄█   ▄▀█ █▀█ █▀█\n";
-    cout << "█▄▄ █ █▄█ █▀▄ █▀█ █▀▄ ░█░   █▀█ █▀▀ █▀▀" << endl;
+    cout << " █░░ █ █▄▄ █▀█ ▄▀█ █▀█ █▄█   ▄▀█ █▀█ █▀█\n";
+    cout << " █▄▄ █ █▄█ █▀▄ █▀█ █▀▄ ░█░   █▀█ █▀▀ █▀▀" << endl;
     cout << "============== Main Menu ==============\n";
     cout << "1. Input Buku\n";
     cout << "2. Daftar Buku\n";
@@ -35,8 +35,9 @@ int main (){
     cin >> menu;
 
     struct buku b[100];
+    struct pinjam p[100];
     int a1;
-    char yn1;
+    char ynd;
 
     switch (menu) {
     case 1:
@@ -46,7 +47,7 @@ int main (){
 		cout << "============= Input Buku ===============\n";
 		cout << "\n" << endl;
         
-		cout << "Masukan data buku Ke \t: ";
+		cout << "Masukan data buku ke\t: ";
         cin  >> a1;
 		cout << "Kode Buku\t\t: ";
         cin  >> b[a1].kodeBuku;
@@ -58,12 +59,60 @@ int main (){
 
         clearScreen();
         break;
+
     case 2:
         clearScreen();
+
         cout << "\n"<< endl;	
-		cout << "============= Daftar Buku ===============\n";
+		cout << "============= Daftar Buku ==============\n";
 		cout << "\n" << endl;
-    default:
+        cout<<"------------------------------------------------------------------\n";
+		cout<<" No  Kode Buku     Judul Buku        Jumlah Buku     Buku Keluar \n";
+		cout<<"------------------------------------------------------------------\n";
+
+        for(int c = 0; c <= a1; c++){
+			int stok = b[c].jumlahBuku - p[c].bukuDipinjam;
+			cout << setw(2) << c+1 << setw(8) << b[c].kodeBuku << setw(22) << b[c].judulBuku << setw(14) << stok << setw(12) << p[c].bukuDipinjam;
+			cout << endl;
+		}
+
+        char yn2;
+        cout << "Kembali ke main menu (y) : ";
+        cin  >> yn2;
+        if (yn2 == 'y') {
+            clearScreen();
+        }
         break;
+
+    case 3:
+
+    case 4:
+
+    case 5:
+
+    case 6:
+        clearScreen();
+
+        char yn6;
+        cout << "Apakah anda yakin ingin keluar? (y/n) ";
+        cin >> yn6;
+
+        switch (yn6) {
+            case 'y':
+                return 0;
+            default:
+                return main();
+        }
+
+    default:
+        clearScreen();
+
+        cout << "Input Error !! Tekan Huruf apapun lalu enter untuk melanjutkan: ";
+        cin  >> ynd;
+        if (ynd =! 0) {
+            clearScreen;
+            break;
+        }
+
     } return main();
 }
