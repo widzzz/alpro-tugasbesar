@@ -80,7 +80,8 @@ int main(){
 		b++;
 			cout<<" Masukan data buku Ke \t: "<<b+1<<endl; 
 			cout<<" Kode Buku \t\t:";scanf("%d%c", &buku[b].kodeB, &temp);
-			cout<<" judul Buku\t\t:";gets(buku[b].judul);
+			cout<<" judul Buku\t\t:";
+			cin >> buku[b].judul;
 			cout<<" Harga Sewa \t\t:";scanf("%d%c", &buku[b].sewa, &temp);
 			cout<<" Jumlah Buku\t\t:";scanf("%d%c", &buku[b].stock, &temp);
 			cout<<endl;
@@ -141,8 +142,10 @@ int main(){
 					}
 				}*/
 				
-				cout<<" Nama Penyewa Buku \t\t:";gets(pinjembuku[d].namap);
-				cout<<" Alamat Penyewa \t\t:";gets(pinjembuku[d].alamat);
+				cout<<" Nama Penyewa Buku \t\t:";
+				cin >> pinjembuku[d].namap;
+				cout<<" Alamat Penyewa \t\t:";
+				cin >> pinjembuku[d].alamat;
 				cout<<" Tanggal Pinjam (DDMMYYYY)\t:";scanf("%d%c", &pinjembuku[d].tglpin, &temp);
 				cout<<" Tanggal Balik (DDMMYYYY)\t:";scanf("%d%c", &pinjembuku[d].tglbalik, &temp);
 				lp = (pinjembuku[d].tglbalik-pinjembuku[d].tglpin)/1000000;
