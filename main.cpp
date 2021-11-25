@@ -93,8 +93,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	}
 }
 
-void inputBuku
-(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void inputBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	system("cls");
