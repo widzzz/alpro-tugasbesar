@@ -153,7 +153,6 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 void pinjamBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
-	transaksipinjem:
 	d++;
 	system("cls");
 	cout<<"\n"<<endl;
@@ -191,7 +190,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	cout<<"Apakah Anda Ingin Menambahkan Data Lagi ? (y/n) :";cin>>yn;
 			
 	if(yn=='y'||yn=='Y'){
-		goto transaksipinjem;
+		return pinjamBuku(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
 	}else{
 		cout << "\n\n Data Berhasil Disimpan \n" << endl;
 		system("pause");
@@ -204,7 +203,6 @@ void kembaliBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& 
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	system("cls");
-	pengembalian:
 	cout<<"\n"<<endl;	
 	cout<<"\t\t\tMasukan kode Peminjaman :";cin>>kodepin; //memasukan kode peminjaman 
 	cout<<"\t\t\t____________________\n"<<endl;
@@ -253,7 +251,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 			cout<<" Apakah ingin mengulang kembali ? (y/n) : ";cin>>yn;
 			if(yn == 'Y' || yn == 'y'){
 				system("cls");
-				goto pengembalian;	
+				return kembaliBuku(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);	
 			}else{
 				system("cls");
 				return mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);;	
