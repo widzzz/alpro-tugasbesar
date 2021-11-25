@@ -2,15 +2,14 @@
 #include<iostream> // Di gunakan untuk menjalankan perintah input dan output. seperti cin, cout.
 #include<conio.h> // Di gunakan untuk membuat antarmuka dengan pengguna. seperti getch
 #include<string.h> // Di gunakan untuk membaca String
-#include<dos.h> // Di gunakan untuk membuat perintah delay.
 #include<iomanip> // Digunakan untuk ngerapihin spasi membuat table
-#include<cstdlib> // Header yang berisi fungsi-fungsi umum termasuk manajemen pengelolaan memori, pembuatan angka acak, berkomunikasi dengan environment, aritmatika, pencarian, pengurutan, dan konversi. 
+#include<cstdlib> // Header yang berisi fungsi-fungsi umum termasuk manajemen pengelolaan memori, pembuatan angka acak, berkomunikasi dengan environment, aritmatika, pencarian, pengurutan, dan konversi.
 using namespace std;
 
 struct buku //membuat struktur buku
 {
 	int kodeB,stock;
-	char judul[20];
+	string judul;
 	int b;
 } buku[100]; //deklarasikan
 
@@ -22,46 +21,46 @@ struct pinjam //membuat struktur pinjam
 	char status;
 } pinjembuku[100]; //deklarasikan
 
-void mainMenu(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void mainMenu(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
-void inputBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void inputBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
 void daftarBuku
-(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
-void pinjamBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void pinjamBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
-void kembaliBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void kembaliBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
-void laporanBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void laporanBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
-void exitProgram(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void exitProgram(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
-void errorHandle(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void errorHandle(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
 //body
 int main(){
-	system("cls"); //di gunakan untuk membersihkan layar output, karena setelah kita menjalankan isi program (program 1,2,3) 
-	
+	system("cls"); //di gunakan untuk membersihkan layar output, karena setelah kita menjalankan isi program (program 1,2,3)
+
 	int jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok;
-	int b =-1; 
+	int b =-1;
 	int d =-1;
 	char yn,ch,temp;
 
 	mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
 }
 
-void mainMenu(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void mainMenu(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch){
-	char pilihan; 
+	char pilihan;
 	cout << "---- Aplikasi Perpustakaan ----\n";
     cout << "-------- Menu ----------\n";
     cout << " 1. Input Buku        \n";
@@ -93,19 +92,20 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	}
 }
 
-void inputBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void inputBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	system("cls");
-		cout<<"\n"<<endl;	
+		cout<<"\n"<<endl;
 		cout<<"\t\t\tInput Buku : \n"; //input buku berdasarkan jumlah  buku yang mau di input
 		cout<<"\t\t\t____________________\n"<<endl;
 		cout<<endl;
 		b++;
-			cout<<" Masukan data buku Ke \t: "<<b+1<<endl; 
+			cout<<" Masukan data buku Ke \t: "<<b+1<<endl;
 			cout<<" Kode Buku \t\t:";scanf("%d%c", &buku[b].kodeB, &temp);
 			cout<<" judul Buku\t\t:";
-			cin >> buku[b].judul;
+			cin.ignore();
+			getline(cin,buku[b].judul);
 			cout<<" Jumlah Buku\t\t:";scanf("%d%c", &buku[b].stock, &temp);
 			cout<<endl;
 			cout<<"Apakah Anda Ingin Menambahkan Data Lagi ? (y/n) :";cin>>yn;
@@ -128,7 +128,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 }
 
 void daftarBuku
-(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	system("cls");
@@ -149,7 +149,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	return mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
 }
 
-void pinjamBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void pinjamBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	d++;
@@ -161,7 +161,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	cout<<" Masukan data Pinjaman Ke \t: "<<d+1<<endl;
 	cout<<" Kode Pinjaman \t\t\t:";scanf("%d%c", &pinjembuku[d].kodepinjam, &temp);
 	cout<<" Kode Buku \t\t\t:";scanf("%d%c", &pinjembuku[d].kB, &temp);
-						
+
 	/*for(c=0;c<=b;c++){
 		if(buku[c].kodeB == pinjembuku[d].kB){
 			cout<<" Judul Buku \t\t\t:"<<buku[c].judul<<endl;
@@ -172,7 +172,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 			goto transaksipinjem;
 		}
 	}*/
-				
+
 	cout<<" Nama Penyewa Buku \t\t:";
 	cin >> pinjembuku[d].namap;
 	cout<<" Alamat Penyewa \t\t:";
@@ -187,7 +187,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	cout<<" Status dipinjam (y) ? \t\t:";cin>>pinjembuku[d].status;
 	cout<<endl;
 	cout<<"Apakah Anda Ingin Menambahkan Data Lagi ? (y/n) :";cin>>yn;
-			
+
 	if(yn=='y'||yn=='Y'){
 		return pinjamBuku(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
 	}else{
@@ -198,15 +198,15 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	}
 }
 
-void kembaliBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void kembaliBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	system("cls");
-	cout<<"\n"<<endl;	
-	cout<<"\t\t\tMasukan kode Peminjaman :";cin>>kodepin; //memasukan kode peminjaman 
+	cout<<"\n"<<endl;
+	cout<<"\t\t\tMasukan kode Peminjaman :";cin>>kodepin; //memasukan kode peminjaman
 	cout<<"\t\t\t____________________\n"<<endl;
 	cout<<endl;
-	for(f=0;f<=d;f++){ 
+	for(f=0;f<=d;f++){
 		if(pinjembuku[f].kodepinjam==kodepin){
 			cout<<" Nama Penyewa Buku \t\t:"<<pinjembuku[f].namap;
 			cout<<endl;
@@ -250,26 +250,26 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 			cout<<" Apakah ingin mengulang kembali ? (y/n) : ";cin>>yn;
 			if(yn == 'Y' || yn == 'y'){
 				system("cls");
-				return kembaliBuku(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);	
+				return kembaliBuku(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
 			}else{
 				system("cls");
-				return mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);;	
+				return mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);;
 			}
 		}
 	}
 }
 
-void laporanBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void laporanBuku(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	system("cls");
-	cout<<"\n"<<endl;	
-	cout<<"\t\t\t laporan Perpustakaan\n"; 
+	cout<<"\n"<<endl;
+	cout<<"\t\t\t laporan Perpustakaan\n";
 	cout<<"\t\t\t____________________\n"<<endl;
 	cout<<"-----------------------------------------------------------------------------------------------------------------------\n";
 	cout<<" No  Kode Peminjam  Judul Buku  Nama Peminjam    Alamat           Tanggal Pinjam  Tanggal Balik   Status   Buku Keluar \n";
 	cout<<"-----------------------------------------------------------------------------------------------------------------------\n";
-	for(g=0;g<=b;g++){ 
+	for(g=0;g<=b;g++){
 		if(pinjembuku[g].kB==buku[g].kodeB){
 			cout<<setw(2)<<g+1<<setw(10)<<pinjembuku[g].kodepinjam<<setw(13)<<buku[g].judul<<setw(12)<<pinjembuku[g].namap<<setw(14)<<pinjembuku[g].alamat<<setw(20)<<pinjembuku[g].tglpin<<setw(10)<<pinjembuku[g].tglbalik<<setw(12)<<pinjembuku[g].status;
 			if((pinjembuku[g].status == 'y') || (pinjembuku[g].status == 'Y')){
@@ -277,7 +277,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 			} else{
 				cout<<" (di kembalikan) "<<endl;
 			}
-			cout<<setw(12)<<pinjembuku[g].dipinjem;	
+			cout<<setw(12)<<pinjembuku[g].dipinjem;
 			cout<<endl;
 		}
 	}
@@ -286,7 +286,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	return mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
 }
 
-void exitProgram(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void exitProgram(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	char exitConfirm;
@@ -303,7 +303,7 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	}
 }
 
-void errorHandle(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g, 
+void errorHandle(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
 	char errorConfirm;
