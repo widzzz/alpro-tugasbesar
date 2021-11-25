@@ -16,8 +16,8 @@ struct buku //membuat struktur buku
 struct pinjam //membuat struktur pinjam
 {
 	int kodepinjam,d,kB,tglpin,tglbalik,dipinjem;
-	char namap[40];
-	char alamat[40];
+	string namap;
+	string alamat;
 	char status;
 } pinjembuku[100]; //deklarasikan
 
@@ -104,7 +104,6 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 			cout<<" Masukan data buku Ke \t: "<<b+1<<endl;
 			cout<<" Kode Buku \t\t:";scanf("%d%c", &buku[b].kodeB, &temp);
 			cout<<" judul Buku\t\t:";
-			cin.ignore();
 			getline(cin,buku[b].judul);
 			cout<<" Jumlah Buku\t\t:";scanf("%d%c", &buku[b].stock, &temp);
 			cout<<endl;
@@ -175,8 +174,9 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 
 	cout<<" Nama Penyewa Buku \t\t:";
 	cin >> pinjembuku[d].namap;
+    cin.ignore();
 	cout<<" Alamat Penyewa \t\t:";
-	cin >> pinjembuku[d].alamat;
+	getline(cin,pinjembuku[d].alamat);
 	cout<<" Tanggal Pinjam (DDMMYYYY)\t:";scanf("%d%c", &pinjembuku[d].tglpin, &temp);
 	cout<<" Tanggal Balik (DDMMYYYY)\t:";scanf("%d%c", &pinjembuku[d].tglbalik, &temp);
 	lp = (pinjembuku[d].tglbalik-pinjembuku[d].tglpin)/1000000;
