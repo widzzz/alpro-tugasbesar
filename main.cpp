@@ -142,7 +142,11 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
     int tempsearch;
     char searchConfirm;
 	string kataKunci;
-    vector<string> keywords{string judul};
+	string tempJudul [100];
+    for(int z=0;z<=b;z++){
+		tempJudul[z] = buku->judul[z];
+	}
+    vector<string> keywords(tempJudul, tempJudul + sizeof(tempJudul) / sizeof(std::string));
 
 	system("cls");
 	cout<<"\n"<<endl;
@@ -165,7 +169,8 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
     case 's':
         system("cls");
         cout << "Masukkan judul yang ingin dicari...";
-        cin >> kataKunci;
+        cin.ignore();
+        getline(cin,kataKunci);
      /*   for(tempsearch=0;c<=b;c++){
             string tempJudul = buku.judul[tempsearch];
             string maxJudul = buku.judul[100];
