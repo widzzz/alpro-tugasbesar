@@ -1,9 +1,10 @@
 //header
 #include<iostream> // Di gunakan untuk menjalankan perintah input dan output. seperti cin, cout.
 #include<conio.h> // Di gunakan untuk membuat antarmuka dengan pengguna. seperti getch
-#include<string.h> // Di gunakan untuk membaca String
+#include<string> // Di gunakan untuk membaca String
 #include<iomanip> // Digunakan untuk ngerapihin spasi membuat table
 #include<cstdlib> // Header yang berisi fungsi-fungsi umum termasuk manajemen pengelolaan memori, pembuatan angka acak, berkomunikasi dengan environment, aritmatika, pencarian, pengurutan, dan konversi.
+#include<algorithm>
 using namespace std;
 
 struct buku //membuat struktur buku
@@ -130,6 +131,14 @@ void daftarBuku
 (char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
+	char searchConfirm;
+	string keywords;
+	struct search {
+        int kodeB,stock;
+        string judul;
+        int b;
+	}result[100];
+
 	system("cls");
 	cout<<"\n"<<endl;
 	cout<<"\t\t\tDaftar Buku"<<endl;
@@ -143,6 +152,18 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 		cout<<endl;
 	}
 	cout<<endl;
+	cout << "Cari judul buku\t[s]\n";
+	cout << "Keluar\t[y]\n";
+	cin >> searchConfirm;
+	switch (searchConfirm){
+    case 's':
+        system("cls");
+        cout << "Masukkan judul yang ingin dicari...";
+        cin >> keywords;
+
+        cout << endl;
+    default:
+        break;}
 	system("pause");
 	system("cls");
 	return mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
