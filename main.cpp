@@ -22,6 +22,13 @@ struct pinjam //membuat struktur pinjam
 	char status;
 } pinjembuku[100]; //deklarasikan
 
+struct cari
+{
+    int kodeB,stock;
+    string judul;
+    int b;
+}result[100];
+
 void mainMenu(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
 
@@ -131,13 +138,9 @@ void daftarBuku
 (char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
-	char searchConfirm;
+    int tempsearch;
+    char searchConfirm;
 	string keywords;
-	struct search {
-        int kodeB,stock;
-        string judul;
-        int b;
-	}result[100];
 
 	system("cls");
 	cout<<"\n"<<endl;
@@ -160,10 +163,20 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
         system("cls");
         cout << "Masukkan judul yang ingin dicari...";
         cin >> keywords;
+        for(tempsearch=0;c<=b;c++){
+            cari.judul[tempsearch]=find(buku.judul[tempsearch],buku.judul[100],keywords);
 
+        }
+
+        if (tempsearch != 100){
+            std::cout << "Element found in myints: " << *p << '\n';
+        } else{
+            cout << "Element not found in myints\n";
+        }
         cout << endl;
     default:
-        break;}
+        break;
+    }
 	system("pause");
 	system("cls");
 	return mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
