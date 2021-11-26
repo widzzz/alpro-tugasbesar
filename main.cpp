@@ -5,9 +5,10 @@
 #include<iomanip> // Digunakan untuk ngerapihin spasi membuat table
 #include<cstdlib> // Header yang berisi fungsi-fungsi umum termasuk manajemen pengelolaan memori, pembuatan angka acak, berkomunikasi dengan environment, aritmatika, pencarian, pengurutan, dan konversi.
 #include<algorithm>
+#include<vector>
 using namespace std;
 
-struct buku //membuat struktur buku
+struct bukuStruct //membuat struktur buku
 {
 	int kodeB,stock;
 	string judul;
@@ -140,7 +141,8 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 {
     int tempsearch;
     char searchConfirm;
-	string keywords;
+	string kataKunci;
+    vector<string> keywords{"double", "int", "float", "switch"};
 
 	system("cls");
 	cout<<"\n"<<endl;
@@ -158,22 +160,33 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 	cout << "Cari judul buku\t[s]\n";
 	cout << "Keluar\t[y]\n";
 	cin >> searchConfirm;
+
 	switch (searchConfirm){
-    case 's':
+    case 'd':
         system("cls");
         cout << "Masukkan judul yang ingin dicari...";
-        cin >> keywords;
-        for(tempsearch=0;c<=b;c++){
-            cari.judul[tempsearch]=find(buku.judul[tempsearch],buku.judul[100],keywords);
-
+        cin >> kataKunci;
+     /*   for(tempsearch=0;c<=b;c++){
+            string tempJudul = buku.judul[tempsearch];
+            string maxJudul = buku.judul[100];
+            result.judul[tempsearch] = find(tempJudul,maxJudul,keywords);
         }
 
         if (tempsearch != 100){
-            std::cout << "Element found in myints: " << *p << '\n';
+            cout << "Judul buku ditemukan : " << result->judul[tempsearch] << "\n";
         } else{
-            cout << "Element not found in myints\n";
+            cout << "Tidak ditemukan\n";
         }
-        cout << endl;
+        cout << endl;*/
+
+
+        for(const auto& keyword : keywords)
+        {
+        auto pos = kataKunci.find(keyword);
+
+        cout << kataKunci << " [" << (pos == string::npos ? " not found" : " found") << "]\n";
+        }
+        break;
     default:
         break;
     }
