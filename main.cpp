@@ -1,12 +1,14 @@
 //header
 #include<iostream> // Di gunakan untuk menjalankan perintah input dan output. seperti cin, cout.
 #include<conio.h> // Di gunakan untuk membuat antarmuka dengan pengguna. seperti getch
-#include<string.h> // Di gunakan untuk membaca String
+#include<string> // Di gunakan untuk membaca String
 #include<iomanip> // Digunakan untuk ngerapihin spasi membuat table
 #include<cstdlib> // Header yang berisi fungsi-fungsi umum termasuk manajemen pengelolaan memori, pembuatan angka acak, berkomunikasi dengan environment, aritmatika, pencarian, pengurutan, dan konversi.
+#include<algorithm>
+#include<vector>
 using namespace std;
 
-struct buku //membuat struktur buku
+struct bukuStruct //membuat struktur buku
 {
 	int kodeB,stock;
 	string judul;
@@ -20,6 +22,13 @@ struct pinjam //membuat struktur pinjam
 	string alamat;
 	char status;
 } pinjembuku[100]; //deklarasikan
+
+struct cari
+{
+    int kodeB,stock;
+    string judul;
+    int b;
+}result[100];
 
 void mainMenu(char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch);
@@ -130,6 +139,15 @@ void daftarBuku
 (char& yn,char& temp, int& b, int& jmlbuk, int& a, int& c, int& e, int& f, int& g,
 int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch)
 {
+    int tempsearch;
+    char searchConfirm;
+	string kataKunci;
+	string tempJudul [100];
+    for(int z=0;z<=b;z++){
+		tempJudul[z] = buku->judul[z];
+	}
+    vector<string> keywords(tempJudul, tempJudul + sizeof(tempJudul) / sizeof(std::string));
+
 	system("cls");
 	cout<<"\n"<<endl;
 	cout<<"\t\t\tDaftar Buku"<<endl;
@@ -143,6 +161,40 @@ int& h, int& jmlpin, int& hs, int& lp, int& kodepin, int& stok, int& d, char& ch
 		cout<<endl;
 	}
 	cout<<endl;
+	cout << "Cari judul buku\t[s]\n";
+	cout << "Keluar\t[y]\n";
+	cin >> searchConfirm;
+
+	switch (searchConfirm){
+    case 's':
+        system("cls");
+        cout << "Masukkan judul yang ingin dicari...";
+        cin.ignore();
+        getline(cin,kataKunci);
+     /*   for(tempsearch=0;c<=b;c++){
+            string tempJudul = buku.judul[tempsearch];
+            string maxJudul = buku.judul[100];
+            result.judul[tempsearch] = find(tempJudul,maxJudul,keywords);
+        }
+
+        if (tempsearch != 100){
+            cout << "Judul buku ditemukan : " << result->judul[tempsearch] << "\n";
+        } else{
+            cout << "Tidak ditemukan\n";
+        }
+        cout << endl;*/
+
+
+        for(const auto& keyword : keywords)
+        {
+        auto pos = kataKunci.find(keyword);
+
+        cout << kataKunci << " [" << (pos == string::npos ? " not found" : " found") << "]\n";
+        }
+        break;
+    default:
+        break;
+    }
 	system("pause");
 	system("cls");
 	return mainMenu(yn,temp,b,jmlbuk,a,c,e,f,g,h,jmlpin,hs,lp,kodepin,stok,d,ch);
